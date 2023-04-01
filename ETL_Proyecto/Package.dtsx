@@ -1,0 +1,3152 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/31/2023 6:07:32 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-7VJVQTU"
+  DTS:CreatorName="DESKTOP-7VJVQTU\danni"
+  DTS:DTSID="{410E25FB-FC34-4FB6-9550-A4F31CF4284E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="5130"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{79FEE0FA-EEDB-4265-A61E-6D166D7127D4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.DbUTN]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{B7FDE27B-04CC-457A-A5F5-B8B606534041}"
+      DTS:ObjectName="localhost.DbUTN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DbUTN;Integrated Security=True;Application Name=SSIS-Package-{B7FDE27B-04CC-457A-A5F5-B8B606534041}localhost.DbUTN;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.DW_DbUTN]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{699623E8-5B96-42F0-B317-A30E011E9E6B}"
+      DTS:ObjectName="localhost.DW_DbUTN">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DW_DbUTN;Integrated Security=True;Application Name=SSIS-Package-{699623E8-5B96-42F0-B317-A30E011E9E6B}localhost.DW_DbUTN;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Costos"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D52B1EAD-7D83-4B50-84F6-4A23CD1CB881}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Costos"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Costos\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."D_Costos"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Costos\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdCosto]"
+                      cachedDataType="i4"
+                      cachedName="IdCosto"
+                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdCosto]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]" />
+                    <inputColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Actividad]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Actividad"
+                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Actividad]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Actividad]" />
+                    <inputColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CostoHora]"
+                      cachedDataType="r8"
+                      cachedName="CostoHora"
+                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CostoHora]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]" />
+                    <inputColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Area]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Area"
+                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Area]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdCosto]"
+                      dataType="i4"
+                      name="IdCosto" />
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Actividad]"
+                      dataType="wstr"
+                      length="100"
+                      name="Actividad" />
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CostoHora]"
+                      dataType="r8"
+                      name="CostoHora" />
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Area]"
+                      dataType="wstr"
+                      length="100"
+                      name="Area" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Costos\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Costos\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Costos\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Costos\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"ScPracticaEmpresarial"."TbCostos"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Costos\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCosto]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]"
+                      name="IdCosto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Actividad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Actividad]"
+                      length="100"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Actividad]"
+                      name="Actividad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CostoHora]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]"
+                      name="CostoHora"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Area]"
+                      length="100"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]"
+                      name="Area"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCosto]"
+                      dataType="i4"
+                      name="IdCosto" />
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Actividad]"
+                      dataType="wstr"
+                      length="100"
+                      name="Actividad" />
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CostoHora]"
+                      dataType="r8"
+                      name="CostoHora" />
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Area]"
+                      dataType="wstr"
+                      length="100"
+                      name="Area" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCosto]"
+                      dataType="i4"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCosto]"
+                      name="IdCosto" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Actividad]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Actividad]"
+                      name="Actividad" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CostoHora]"
+                      dataType="r8"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CostoHora]"
+                      name="CostoHora" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Area]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Area]"
+                      name="Area" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Costos.Paths[ADO NET Source Output]"
+              endId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Crear"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{EB5B3DA6-B58A-4CF9-9F6D-2C02F074E69E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Crear"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{699623E8-5B96-42F0-B317-A30E011E9E6B}"
+          SQLTask:SqlStatementSource="USE [DW_DbUTN]&#xA;GO&#xA;&#xA;/****** Object:  Table [dbo].[D_Practicas]    Script Date: 1/4/2023 03:25:49 ******/&#xA;SET ANSI_NULLS ON&#xA;GO&#xA;&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[D_Practicas](&#xA;&#x9;[IdPracticaEmpresarial] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[IdCosto] [int] NULL,&#xA;&#x9;[IdEstudiante] [int] NULL,&#xA;&#x9;[IdEmpresa] [int] NULL,&#xA;&#x9;[IdGeografia] [int] NULL,&#xA;&#x9;[IdTiempo] [int] NULL,&#xA;&#x9;[NotaAcademica] [float] NULL,&#xA;&#x9;[NotaEmpresarial] [float] NULL,&#xA; CONSTRAINT [PK_D_Practicas] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[IdPracticaEmpresarial] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Costos] FOREIGN KEY([IdCosto])&#xA;REFERENCES [dbo].[D_Costos] ([IdCosto])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Costos]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Empresas] FOREIGN KEY([IdEmpresa])&#xA;REFERENCES [dbo].[D_Empresas] ([IdEmpresa])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Empresas]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Estudiantes] FOREIGN KEY([IdEstudiante])&#xA;REFERENCES [dbo].[D_Estudiantes] ([IdEstudiante])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Estudiantes]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Geograficas] FOREIGN KEY([IdGeografia])&#xA;REFERENCES [dbo].[D_Geograficas] ([IdGeografica])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Geograficas]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Tiempos] FOREIGN KEY([IdTiempo])&#xA;REFERENCES [dbo].[D_Tiempos] ([IdTiempo])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Tiempos]&#xA;GO&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Empresas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8C8CD649-EC6F-4E44-9439-18C81916914B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Empresas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Empresas\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."D_Empresas"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Empresas\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdEmpresa]"
+                      cachedDataType="i4"
+                      cachedName="IdEmpresa"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEmpresa]"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]" />
+                    <inputColumn
+                      refId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ActividadEconomica]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ActividadEconomica"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ActividadEconomica]"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[ActividadEconomica]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEmpresa]"
+                      dataType="i4"
+                      name="IdEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ActividadEconomica]"
+                      dataType="wstr"
+                      length="50"
+                      name="ActividadEconomica" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Empresas\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Empresas\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Empresas\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Empresas\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"ScPracticaEmpresarial"."TbEmpresas"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Empresas\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEmpresa]"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]"
+                      name="IdEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Nombre]"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[PersonaEncargada]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[PersonaEncargada]"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[PersonaEncargada]"
+                      name="PersonaEncargada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cargo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cargo]"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[Cargo]"
+                      name="Cargo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[CorreoEmpresa]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CorreoEmpresa]"
+                      length="100"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[CorreoEmpresa]"
+                      name="CorreoEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[SectorProductivo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SectorProductivo]"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[SectorProductivo]"
+                      name="SectorProductivo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[ActividadEconomica]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ActividadEconomica]"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].Columns[ActividadEconomica]"
+                      name="ActividadEconomica"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEmpresa]"
+                      dataType="i4"
+                      name="IdEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[PersonaEncargada]"
+                      dataType="wstr"
+                      length="50"
+                      name="PersonaEncargada" />
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Cargo]"
+                      dataType="wstr"
+                      length="50"
+                      name="Cargo" />
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CorreoEmpresa]"
+                      dataType="wstr"
+                      length="100"
+                      name="CorreoEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SectorProductivo]"
+                      dataType="wstr"
+                      length="50"
+                      name="SectorProductivo" />
+                    <externalMetadataColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ActividadEconomica]"
+                      dataType="wstr"
+                      length="50"
+                      name="ActividadEconomica" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEmpresa]"
+                      dataType="i4"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEmpresa]"
+                      name="IdEmpresa" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Nombre]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[PersonaEncargada]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[PersonaEncargada]"
+                      name="PersonaEncargada" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cargo]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Cargo]"
+                      name="Cargo" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CorreoEmpresa]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CorreoEmpresa]"
+                      name="CorreoEmpresa" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SectorProductivo]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SectorProductivo]"
+                      name="SectorProductivo" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ActividadEconomica]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ActividadEconomica]"
+                      name="ActividadEconomica" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Empresas.Paths[ADO NET Source Output]"
+              endId="Package\Empresas\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Empresas\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Estudiantes"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BFB0ADBC-F38E-4915-89D3-5A9654319E47}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Estudiantes"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Estudiantes\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."D_Estudiantes"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Estudiantes\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdEstudiante]"
+                      cachedDataType="i4"
+                      cachedName="IdEstudiante"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEstudiante]"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]" />
+                    <inputColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[FechaNacimiento]"
+                      cachedDataType="dbDate"
+                      cachedName="FechaNacimiento"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FechaNacimiento]"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaNacimiento]" />
+                    <inputColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Carrera]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Carrera"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carrera]"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carrera]" />
+                    <inputColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Sede]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Sede"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Sede]"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Sede]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEstudiante]"
+                      dataType="i4"
+                      name="IdEstudiante" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[FechaNacimiento]"
+                      dataType="dbTimeStamp"
+                      name="FechaNacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Carrera]"
+                      dataType="wstr"
+                      length="100"
+                      name="Carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Sede]"
+                      dataType="wstr"
+                      length="100"
+                      name="Sede" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Estudiantes\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Estudiantes\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Estudiantes\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Estudiantes\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"ScPracticaEmpresarial"."TbEstudiantes"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Estudiantes\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEstudiante]"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]"
+                      name="IdEstudiante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Nombre]"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Apellido1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Apellido1]"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Apellido1]"
+                      name="Apellido1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Apellido2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Apellido2]"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Apellido2]"
+                      name="Apellido2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Sexo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Sexo]"
+                      length="1"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Sexo]"
+                      name="Sexo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nacionalidad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Nacionalidad]"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Nacionalidad]"
+                      name="Nacionalidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaNacimiento]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FechaNacimiento]"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaNacimiento]"
+                      name="FechaNacimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Telefono]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Telefono]"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Telefono]"
+                      name="Telefono"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[CorreoElectronico]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CorreoElectronico]"
+                      length="100"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[CorreoElectronico]"
+                      name="CorreoElectronico"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carrera]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carrera]"
+                      length="100"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Carrera]"
+                      name="Carrera"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaInicio]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FechaInicio]"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaInicio]"
+                      name="FechaInicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Sede]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Sede]"
+                      length="100"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].Columns[Sede]"
+                      name="Sede"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEstudiante]"
+                      dataType="i4"
+                      name="IdEstudiante" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Apellido1]"
+                      dataType="wstr"
+                      length="50"
+                      name="Apellido1" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Apellido2]"
+                      dataType="wstr"
+                      length="50"
+                      name="Apellido2" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Sexo]"
+                      dataType="wstr"
+                      length="1"
+                      name="Sexo" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Nacionalidad]"
+                      dataType="wstr"
+                      length="50"
+                      name="Nacionalidad" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FechaNacimiento]"
+                      dataType="dbDate"
+                      name="FechaNacimiento" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Telefono]"
+                      dataType="wstr"
+                      length="50"
+                      name="Telefono" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CorreoElectronico]"
+                      dataType="wstr"
+                      length="100"
+                      name="CorreoElectronico" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Carrera]"
+                      dataType="wstr"
+                      length="100"
+                      name="Carrera" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FechaInicio]"
+                      dataType="dbDate"
+                      name="FechaInicio" />
+                    <externalMetadataColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Sede]"
+                      dataType="wstr"
+                      length="100"
+                      name="Sede" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEstudiante]"
+                      dataType="i4"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEstudiante]"
+                      name="IdEstudiante" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Nombre]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Apellido1]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Apellido1]"
+                      name="Apellido1" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Apellido2]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Apellido2]"
+                      name="Apellido2" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Sexo]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Sexo]"
+                      name="Sexo" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Nacionalidad]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Nacionalidad]"
+                      name="Nacionalidad" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FechaNacimiento]"
+                      dataType="dbDate"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FechaNacimiento]"
+                      name="FechaNacimiento" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Telefono]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Telefono]"
+                      name="Telefono" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CorreoElectronico]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CorreoElectronico]"
+                      name="CorreoElectronico" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carrera]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Carrera]"
+                      name="Carrera" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FechaInicio]"
+                      dataType="dbDate"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FechaInicio]"
+                      name="FechaInicio" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Sede]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Sede]"
+                      name="Sede" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Estudiantes.Paths[ADO NET Source Output]"
+              endId="Package\Estudiantes\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Estudiantes\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Geografica"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{170316C7-6C2F-4374-91A6-F9DEDAEBBBED}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Geografica"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Geografica\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."D_Geograficas"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Geografica\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Canton]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Canton"
+                      externalMetadataColumnId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Canton]"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Canton]" />
+                    <inputColumn
+                      refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Distrito]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Distrito"
+                      externalMetadataColumnId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Distrito]"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Distrito]" />
+                    <inputColumn
+                      refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Provincia]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Provincia"
+                      externalMetadataColumnId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Provincia]"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Provincia]" />
+                    <inputColumn
+                      refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdEmpresa]"
+                      cachedDataType="i4"
+                      cachedName="IdEmpresa"
+                      externalMetadataColumnId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdGeografica]"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdGeografica]"
+                      dataType="i4"
+                      name="IdGeografica" />
+                    <externalMetadataColumn
+                      refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Provincia]"
+                      dataType="wstr"
+                      length="50"
+                      name="Provincia" />
+                    <externalMetadataColumn
+                      refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Canton]"
+                      dataType="wstr"
+                      length="50"
+                      name="Canton" />
+                    <externalMetadataColumn
+                      refId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Distrito]"
+                      dataType="wstr"
+                      length="50"
+                      name="Distrito" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Geografica\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Geografica\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Geografica\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Geografica\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT   ScPracticaEmpresarial.TbCantones.Nombre AS Canton, ScPracticaEmpresarial.TbDistritos.Nombre AS Distrito, ScPracticaEmpresarial.TbProvincias.Nombre AS Provincia, ScPracticaEmpresarial.TbEmpresas.IdEmpresa
+FROM      ScPracticaEmpresarial.TbCantones INNER JOIN
+                ScPracticaEmpresarial.TbDistritos ON ScPracticaEmpresarial.TbCantones.IdCanton = ScPracticaEmpresarial.TbDistritos.IdCanton INNER JOIN
+                ScPracticaEmpresarial.TbProvincias ON ScPracticaEmpresarial.TbCantones.IdProvincia = ScPracticaEmpresarial.TbProvincias.IdProvincia CROSS JOIN
+                ScPracticaEmpresarial.TbEmpresas</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Geografica\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Canton]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Canton]"
+                      length="50"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Canton]"
+                      name="Canton"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Distrito]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Distrito]"
+                      length="50"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Distrito]"
+                      name="Distrito"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Provincia]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Provincia]"
+                      length="50"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[Provincia]"
+                      name="Provincia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEmpresa]"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]"
+                      name="IdEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Canton]"
+                      dataType="wstr"
+                      length="50"
+                      name="Canton" />
+                    <externalMetadataColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Distrito]"
+                      dataType="wstr"
+                      length="50"
+                      name="Distrito" />
+                    <externalMetadataColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Provincia]"
+                      dataType="wstr"
+                      length="50"
+                      name="Provincia" />
+                    <externalMetadataColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEmpresa]"
+                      dataType="i4"
+                      name="IdEmpresa" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Canton]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Canton]"
+                      name="Canton" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Distrito]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Distrito]"
+                      name="Distrito" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Provincia]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Provincia]"
+                      name="Provincia" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEmpresa]"
+                      dataType="i4"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEmpresa]"
+                      name="IdEmpresa" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Geografica.Paths[ADO NET Source Output]"
+              endId="Package\Geografica\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Geografica\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C6BBE0BC-3A21-4110-94AC-C16906BA7023}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{699623E8-5B96-42F0-B317-A30E011E9E6B}"
+          SQLTask:SqlStatementSource="if exists (select *  from INFORMATION_SCHEMA.TABLES where table_name = 'D_Practicas')&#xA;Drop Table dbo.D_Practicas&#xA;go&#xA;&#xA;Truncate Table D_Empresas&#xA;Truncate Table D_Estudiantes&#xA;Truncate Table D_Costos&#xA;Truncate Table D_Geograficas&#xA;Truncate Table D_Tiempos" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Practicas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F0C324CA-865A-4620-9DFF-E8046D06A317}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Practicas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Practicas\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."D_Practicas"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Practicas\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdCosto]"
+                      cachedDataType="i4"
+                      cachedName="IdCosto"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdCosto]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]" />
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdEmpresa]"
+                      cachedDataType="i4"
+                      cachedName="IdEmpresa"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEmpresa]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]" />
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdEstudiante]"
+                      cachedDataType="i4"
+                      cachedName="IdEstudiante"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEstudiante]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]" />
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NotaEmpresarial]"
+                      cachedDataType="r8"
+                      cachedName="NotaEmpresarial"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NotaEmpresarial]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaEmpresarial]" />
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NotaAcademica]"
+                      cachedDataType="r8"
+                      cachedName="NotaAcademica"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NotaAcademica]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaAcademica]" />
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdUbicacionEmpresa]"
+                      cachedDataType="i4"
+                      cachedName="IdUbicacionEmpresa"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdGeografia]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdUbicacionEmpresa]" />
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdPracticaEmpresarial]"
+                      cachedDataType="i4"
+                      cachedName="IdPracticaEmpresarial"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdTiempo]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdPracticaEmpresarial]"
+                      dataType="i4"
+                      name="IdPracticaEmpresarial" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdCosto]"
+                      dataType="i4"
+                      name="IdCosto" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEstudiante]"
+                      dataType="i4"
+                      name="IdEstudiante" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEmpresa]"
+                      dataType="i4"
+                      name="IdEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdGeografia]"
+                      dataType="i4"
+                      name="IdGeografia" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdTiempo]"
+                      dataType="i4"
+                      name="IdTiempo" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NotaAcademica]"
+                      dataType="r8"
+                      name="NotaAcademica" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NotaEmpresarial]"
+                      dataType="r8"
+                      name="NotaEmpresarial" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Practicas\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Practicas\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT   ScPracticaEmpresarial.TbCostos.IdCosto, ScPracticaEmpresarial.TbEmpresas.IdEmpresa, ScPracticaEmpresarial.TbEstudiantes.IdEstudiante, ScPracticaEmpresarial.TbPracticasEmpresariales.IdPracticaEmpresarial, 
+                ScPracticaEmpresarial.TbUbicacionEmpresas.IdUbicacionEmpresa, ScPracticaEmpresarial.TbPracticasEmpresariales.NotaEmpresarial, ScPracticaEmpresarial.TbPracticasEmpresariales.NotaAcademica
+FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
+                ScPracticaEmpresarial.TbPracticasEmpresariales ON ScPracticaEmpresarial.TbCostos.IdCosto = ScPracticaEmpresarial.TbPracticasEmpresariales.IdCostos INNER JOIN
+                ScPracticaEmpresarial.TbEmpresas ON ScPracticaEmpresarial.TbPracticasEmpresariales.IdEmpresa = ScPracticaEmpresarial.TbEmpresas.IdEmpresa INNER JOIN
+                ScPracticaEmpresarial.TbEstudiantes ON ScPracticaEmpresarial.TbPracticasEmpresariales.IdEstudiante = ScPracticaEmpresarial.TbEstudiantes.IdEstudiante INNER JOIN
+                ScPracticaEmpresarial.TbUbicacionEmpresas ON ScPracticaEmpresarial.TbEmpresas.IdEmpresa = ScPracticaEmpresarial.TbUbicacionEmpresas.IdEmpresa</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Practicas\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCosto]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]"
+                      name="IdCosto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEmpresa]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]"
+                      name="IdEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEstudiante]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]"
+                      name="IdEstudiante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdPracticaEmpresarial]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]"
+                      name="IdPracticaEmpresarial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdUbicacionEmpresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdUbicacionEmpresa]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdUbicacionEmpresa]"
+                      name="IdUbicacionEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaEmpresarial]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaEmpresarial]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaEmpresarial]"
+                      name="NotaEmpresarial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaAcademica]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaAcademica]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaAcademica]"
+                      name="NotaAcademica"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCosto]"
+                      dataType="i4"
+                      name="IdCosto" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEmpresa]"
+                      dataType="i4"
+                      name="IdEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEstudiante]"
+                      dataType="i4"
+                      name="IdEstudiante" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdPracticaEmpresarial]"
+                      dataType="i4"
+                      name="IdPracticaEmpresarial" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdUbicacionEmpresa]"
+                      dataType="i4"
+                      name="IdUbicacionEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaEmpresarial]"
+                      dataType="r8"
+                      name="NotaEmpresarial" />
+                    <externalMetadataColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaAcademica]"
+                      dataType="r8"
+                      name="NotaAcademica" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCosto]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCosto]"
+                      name="IdCosto" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEmpresa]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEmpresa]"
+                      name="IdEmpresa" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEstudiante]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEstudiante]"
+                      name="IdEstudiante" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdPracticaEmpresarial]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdPracticaEmpresarial]"
+                      name="IdPracticaEmpresarial" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdUbicacionEmpresa]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdUbicacionEmpresa]"
+                      name="IdUbicacionEmpresa" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaEmpresarial]"
+                      dataType="r8"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaEmpresarial]"
+                      name="NotaEmpresarial" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaAcademica]"
+                      dataType="r8"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaAcademica]"
+                      name="NotaAcademica" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Practicas.Paths[ADO NET Source Output]"
+              endId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tiempo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{25A048BB-89E9-41E6-9C2E-EFB7C38FE4C0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tiempo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Tiempo\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."D_Tiempos"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tiempo\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DW_DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[MesInicio]"
+                      cachedDataType="i4"
+                      cachedName="MesInicio"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MesInicio]"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[MesInicio]" />
+                    <inputColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[AnioInicio]"
+                      cachedDataType="i4"
+                      cachedName="AnioInicio"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[AnioInicio]"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[AnioInicio]" />
+                    <inputColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[MesFin]"
+                      cachedDataType="i4"
+                      cachedName="MesFin"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MesFin]"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[MesFin]" />
+                    <inputColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[AnioFIn]"
+                      cachedDataType="i4"
+                      cachedName="AnioFIn"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[AnioFin]"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[AnioFIn]" />
+                    <inputColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdPracticaEmpresarial]"
+                      cachedDataType="i4"
+                      cachedName="IdPracticaEmpresarial"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdTiempo]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdTiempo]"
+                      dataType="i4"
+                      name="IdTiempo" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[AnioInicio]"
+                      dataType="i4"
+                      name="AnioInicio" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MesInicio]"
+                      dataType="i4"
+                      name="MesInicio" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[AnioFin]"
+                      dataType="i4"
+                      name="AnioFin" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MesFin]"
+                      dataType="i4"
+                      name="MesFin" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tiempo\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tiempo\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"ScPracticaEmpresarial"."TbPracticasEmpresariales"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tiempo\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DbUTN]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DbUTN]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdPracticaEmpresarial]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]"
+                      name="IdPracticaEmpresarial"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCostos]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCostos]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCostos]"
+                      name="IdCostos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEstudiante]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]"
+                      name="IdEstudiante"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEmpresa]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEmpresa]"
+                      name="IdEmpresa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[Anio]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Anio]"
+                      length="50"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[Anio]"
+                      name="Anio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaInicio]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FechaInicio]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaInicio]"
+                      name="FechaInicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaFin]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FechaFin]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaFin]"
+                      name="FechaFin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaAcademica]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaAcademica]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaAcademica]"
+                      name="NotaAcademica"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaEmpresarial]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaEmpresarial]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaEmpresarial]"
+                      name="NotaEmpresarial"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdPracticaEmpresarial]"
+                      dataType="i4"
+                      name="IdPracticaEmpresarial" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCostos]"
+                      dataType="i4"
+                      name="IdCostos" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEstudiante]"
+                      dataType="i4"
+                      name="IdEstudiante" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdEmpresa]"
+                      dataType="i4"
+                      name="IdEmpresa" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Anio]"
+                      dataType="wstr"
+                      length="50"
+                      name="Anio" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FechaInicio]"
+                      dataType="dbDate"
+                      name="FechaInicio" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[FechaFin]"
+                      dataType="dbDate"
+                      name="FechaFin" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaAcademica]"
+                      dataType="r8"
+                      name="NotaAcademica" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaEmpresarial]"
+                      dataType="r8"
+                      name="NotaEmpresarial" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdPracticaEmpresarial]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdPracticaEmpresarial]"
+                      name="IdPracticaEmpresarial" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCostos]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCostos]"
+                      name="IdCostos" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEstudiante]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEstudiante]"
+                      name="IdEstudiante" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEmpresa]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdEmpresa]"
+                      name="IdEmpresa" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Anio]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Anio]"
+                      name="Anio" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FechaInicio]"
+                      dataType="dbDate"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FechaInicio]"
+                      name="FechaInicio" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FechaFin]"
+                      dataType="dbDate"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[FechaFin]"
+                      name="FechaFin" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaAcademica]"
+                      dataType="r8"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaAcademica]"
+                      name="NotaAcademica" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaEmpresarial]"
+                      dataType="r8"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaEmpresarial]"
+                      name="NotaEmpresarial" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tiempo\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tiempo\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tiempo\Derived Column.Inputs[Derived Column Input].Columns[FechaInicio]"
+                      cachedDataType="dbDate"
+                      cachedName="FechaInicio"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaInicio]" />
+                    <inputColumn
+                      refId="Package\Tiempo\Derived Column.Inputs[Derived Column Input].Columns[FechaFin]"
+                      cachedDataType="dbDate"
+                      cachedName="FechaFin"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaFin]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tiempo\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Tiempo\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[MesInicio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[MesInicio]"
+                      name="MesInicio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[MONTH](#{Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaInicio]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(FechaInicio)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[AnioInicio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[AnioInicio]"
+                      name="AnioInicio"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[YEAR](#{Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaInicio]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(FechaInicio)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[MesFin]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[MesFin]"
+                      name="MesFin"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[MONTH](#{Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaFin]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(FechaFin)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[AnioFIn]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Output].Columns[AnioFIn]"
+                      name="AnioFIn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[YEAR](#{Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[FechaFin]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(FechaFin)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tiempo\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Tiempo\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tiempo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tiempo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Tiempo.Paths[ADO NET Source Output]"
+              endId="Package\Tiempo\Derived Column.Inputs[Derived Column Input]"
+              name="ADO NET Source Output"
+              startId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Tiempo.Paths[Derived Column Output]"
+              endId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Tiempo\Derived Column.Outputs[Derived Column Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{4F0D247F-371F-44B6-9323-DCC55CF5274A}"
+      DTS:From="Package\Limpiar"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Crear" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{58AB4168-8657-4105-9F97-E779F4855AA1}"
+      DTS:From="Package\Crear"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Empresas" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{FE65CAFC-BF81-4FC5-B890-E9A71F2D5365}"
+      DTS:From="Package\Empresas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Estudiantes" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{80390BB1-FF74-4239-8D91-B29C1B848EDA}"
+      DTS:From="Package\Estudiantes"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Costos" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{5D48C32A-B44D-4E51-9336-82326158C40A}"
+      DTS:From="Package\Costos"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Tiempo" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{93241C17-AD99-47A9-8EEE-60FCA0A43DF3}"
+      DTS:From="Package\Tiempo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Geografica" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{D405F315-7C68-43DB-97EB-7FF58512014D}"
+      DTS:From="Package\Geografica"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Practicas" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="109.30693069307,41.8217821782179"
+          Id="Package\Costos"
+          TopLeft="84.9999998327922,240.49999679644" />
+        <NodeLayout
+          Size="103.60396039604,41.8217821782179"
+          Id="Package\Crear"
+          TopLeft="451.060605173302,68.9675315488563" />
+        <NodeLayout
+          Size="123.564356435644,41.8217821782179"
+          Id="Package\Empresas"
+          TopLeft="80.8333331743219,64.9999991341731" />
+        <NodeLayout
+          Size="138.772277227723,41.8217821782179"
+          Id="Package\Estudiantes"
+          TopLeft="77.2727271207203,154.480517422775" />
+        <NodeLayout
+          Size="128.316831683169,41.8217821782179"
+          Id="Package\Geografica"
+          TopLeft="523.333332303858,245.142853877453" />
+        <NodeLayout
+          Size="112.158415841585,41.8217821782179"
+          Id="Package\Limpiar"
+          TopLeft="673.863635038046,71.4155834642991" />
+        <NodeLayout
+          Size="119.762376237624,41.8217821782179"
+          Id="Package\Practicas"
+          TopLeft="529.99999895741,376.071423562001" />
+        <NodeLayout
+          Size="113.10891089109,41.8217821782179"
+          Id="Package\Tiempo"
+          TopLeft="295.97222164,244.678568169352" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="673.863635038046,91.1024485956866">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-119.199069468704,0"
+              Start="0,0"
+              End="-111.699069468704,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-111.699069468704,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="451.060605173302,87.8946564306236">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-246.662915563337,0"
+              Start="0,0"
+              End="-239.162915563337,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-239.162915563337,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="144.637188563363,106.821781312391">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.6587361103838"
+              Start="0,0"
+              End="0,40.1587361103838">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.1587361103838" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="143.156165456954,196.302299600993">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.1976971954473"
+              Start="0,0"
+              End="0,36.6976971954473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.6976971954473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="194.306930525861,263.500173572005">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="101.665291114139,0"
+              Start="0,0"
+              End="94.1652911141388,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.1652911141388,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="409.081132531089,265.821602112511">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.252199772769,0"
+              Start="0,0"
+              End="106.752199772769,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="106.752199772769,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="588.686467610832,286.96463605567">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.1067875063305"
+              Start="0,0"
+              End="0,81.6067875063305">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,81.6067875063305" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Costos">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156.831683168317,41.8217821782179"
+          Id="Package\Costos\ADO NET Source"
+          TopLeft="101.000003814697,70.0000026438496" />
+        <NodeLayout
+          Size="177.742574257426,41.8217821782179"
+          Id="Package\Costos\ADO NET Destination"
+          TopLeft="127.000004796699,238.000008989089" />
+        <EdgeLayout
+          Id="Package\Costos.Paths[ADO NET Source Output]"
+          TopLeft="179.415845398856,111.821784822067">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36.4554465265557,126.178224167021"
+              Start="0,0"
+              End="36.4554465265557,118.678224167021">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.0891120835106" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.0891120835106"
+                    Point2="0,63.0891120835106"
+                    Point3="4,63.0891120835106" />
+                  <mssgle:LineSegment
+                    End="32.4554465265557,63.0891120835106" />
+                  <mssgle:CubicBezierSegment
+                    Point1="32.4554465265557,63.0891120835106"
+                    Point2="36.4554465265557,63.0891120835106"
+                    Point3="36.4554465265557,67.0891120835106" />
+                  <mssgle:LineSegment
+                    End="36.4554465265557,118.678224167021" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Costos\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Costos\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Empresas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156.831683168317,41.8217821782179"
+          Id="Package\Empresas\ADO NET Source"
+          TopLeft="136.666666397823,69.6428562151854" />
+        <NodeLayout
+          Size="177.742574257426,41.8217821782179"
+          Id="Package\Empresas\ADO NET Destination"
+          TopLeft="456.666665768335,187.571426072899" />
+        <EdgeLayout
+          Id="Package\Empresas.Paths[ADO NET Source Output]"
+          TopLeft="215.082507981981,111.464638393403">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="330.455444915067,76.1067876794958"
+              Start="0,0"
+              End="330.455444915067,68.6067876794958">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.0533938397479" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.0533938397479"
+                    Point2="0,38.0533938397479"
+                    Point3="4,38.0533938397479" />
+                  <mssgle:LineSegment
+                    End="326.455444915067,38.0533938397479" />
+                  <mssgle:CubicBezierSegment
+                    Point1="326.455444915067,38.0533938397479"
+                    Point2="330.455444915067,38.0533938397479"
+                    Point3="330.455444915067,42.0533938397479" />
+                  <mssgle:LineSegment
+                    End="330.455444915067,68.6067876794958" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Empresas\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Empresas\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Estudiantes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172.990099009901,41.8217821782179"
+          Id="Package\Estudiantes\ADO NET Source"
+          TopLeft="88.0000033236965,97.3762409852282" />
+        <NodeLayout
+          Size="177.742574257426,41.8217821782179"
+          Id="Package\Estudiantes\ADO NET Destination"
+          TopLeft="89.0000033614657,204.000007704933" />
+        <EdgeLayout
+          Id="Package\Estudiantes.Paths[ADO NET Source Output]"
+          TopLeft="176.183171659413,139.198023163446">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.801984541487"
+              Start="0,0"
+              End="0,57.301984541487">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.301984541487" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Estudiantes\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Estudiantes\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Geografica">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156.831683168317,41.8217821782179"
+          Id="Package\Geografica\ADO NET Source"
+          TopLeft="134.000005061083,89.0000033614659" />
+        <NodeLayout
+          Size="177.742574257426,41.8217821782179"
+          Id="Package\Geografica\ADO NET Destination"
+          TopLeft="402.000015183251,271.000010235475" />
+        <EdgeLayout
+          Id="Package\Geografica.Paths[ADO NET Source Output]"
+          TopLeft="212.415846645242,130.821785539684">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="278.455455666721,140.178224695791"
+              Start="0,0"
+              End="278.455455666721,132.678224695791">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.0891123478955" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.0891123478955"
+                    Point2="0,70.0891123478955"
+                    Point3="4,70.0891123478955" />
+                  <mssgle:LineSegment
+                    End="274.455455666721,70.0891123478955" />
+                  <mssgle:CubicBezierSegment
+                    Point1="274.455455666721,70.0891123478955"
+                    Point2="278.455455666721,70.0891123478955"
+                    Point3="278.455455666721,74.0891123478955" />
+                  <mssgle:LineSegment
+                    End="278.455455666721,132.678224695791" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Geografica\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Geografica\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Practicas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156.831683168317,41.8217821782179"
+          Id="Package\Practicas\ADO NET Source"
+          TopLeft="204.000007704933,80.0000030215423" />
+        <NodeLayout
+          Size="177.742574257426,41.8217821782179"
+          Id="Package\Practicas\ADO NET Destination"
+          TopLeft="187.000007062855,257.000009706705" />
+        <EdgeLayout
+          Id="Package\Practicas.Paths[ADO NET Source Output]"
+          TopLeft="279.14357174033,121.82178519976">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,135.178224506945"
+              Start="0,0"
+              End="0,127.678224506945">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.678224506945" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Practicas\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Practicas\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Tiempo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153.029702970298,41.8217821782179"
+          Id="Package\Tiempo\Derived Column"
+          TopLeft="119.166666432248,200.571425899734" />
+        <NodeLayout
+          Size="156.831683168317,41.8217821782179"
+          Id="Package\Tiempo\ADO NET Source"
+          TopLeft="94.1666664814267,70.5714276313879" />
+        <NodeLayout
+          Size="177.742574257426,41.8217821782179"
+          Id="Package\Tiempo\ADO NET Destination"
+          TopLeft="394.999999222976,294.357138936184" />
+        <EdgeLayout
+          Id="Package\Tiempo.Paths[Derived Column Output]"
+          TopLeft="195.681517917397,242.393208077952">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="288.189768434292,51.9639308582322"
+              Start="0,0"
+              End="288.189768434292,44.4639308582322">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.9819654291161" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.9819654291161"
+                    Point2="0,25.9819654291161"
+                    Point3="4,25.9819654291161" />
+                  <mssgle:LineSegment
+                    End="284.189768434292,25.9819654291161" />
+                  <mssgle:CubicBezierSegment
+                    Point1="284.189768434292,25.9819654291161"
+                    Point2="288.189768434292,25.9819654291161"
+                    Point3="288.189768434292,29.9819654291161" />
+                  <mssgle:LineSegment
+                    End="288.189768434292,44.4639308582322" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tiempo.Paths[ADO NET Source Output]"
+          TopLeft="172.582508065585,112.393209809606">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.0990098518113,88.1782160901282"
+              Start="0,0"
+              End="23.0990098518113,80.6782160901282">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.0891080450641" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.0891080450641"
+                    Point2="0,44.0891080450641"
+                    Point3="4,44.0891080450641" />
+                  <mssgle:LineSegment
+                    End="19.0990098518113,44.0891080450641" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.0990098518113,44.0891080450641"
+                    Point2="23.0990098518113,44.0891080450641"
+                    Point3="23.0990098518113,48.0891080450641" />
+                  <mssgle:LineSegment
+                    End="23.0990098518113,80.6782160901282" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tiempo\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tiempo\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
