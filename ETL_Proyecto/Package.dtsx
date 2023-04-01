@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{79FEE0FA-EEDB-4265-A61E-6D166D7127D4}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{E7F3EC5B-D351-410D-9F75-447BF3903D54}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1617,6 +1617,12 @@ FROM      ScPracticaEmpresarial.TbCantones INNER JOIN
                       externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEstudiante]"
                       lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]" />
                     <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdPracticaEmpresarial]"
+                      cachedDataType="i4"
+                      cachedName="IdPracticaEmpresarial"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdPracticaEmpresarial]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]" />
+                    <inputColumn
                       refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NotaEmpresarial]"
                       cachedDataType="r8"
                       cachedName="NotaEmpresarial"
@@ -1628,18 +1634,6 @@ FROM      ScPracticaEmpresarial.TbCantones INNER JOIN
                       cachedName="NotaAcademica"
                       externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NotaAcademica]"
                       lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaAcademica]" />
-                    <inputColumn
-                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdUbicacionEmpresa]"
-                      cachedDataType="i4"
-                      cachedName="IdUbicacionEmpresa"
-                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdGeografia]"
-                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdUbicacionEmpresa]" />
-                    <inputColumn
-                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdPracticaEmpresarial]"
-                      cachedDataType="i4"
-                      cachedName="IdPracticaEmpresarial"
-                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdTiempo]"
-                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1660,9 +1654,9 @@ FROM      ScPracticaEmpresarial.TbCantones INNER JOIN
                       dataType="i4"
                       name="IdEmpresa" />
                     <externalMetadataColumn
-                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdGeografia]"
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdGeografica]"
                       dataType="i4"
-                      name="IdGeografia" />
+                      name="IdGeografica" />
                     <externalMetadataColumn
                       refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdTiempo]"
                       dataType="i4"
@@ -2930,13 +2924,13 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156.831683168317,41.8217821782179"
-          Id="Package\Geografica\ADO NET Source"
-          TopLeft="134.000005061083,89.0000033614659" />
-        <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Geografica\ADO NET Destination"
           TopLeft="402.000015183251,271.000010235475" />
+        <NodeLayout
+          Size="156.831683168317,41.8217821782179"
+          Id="Package\Geografica\ADO NET Source"
+          TopLeft="134.000005061083,89.0000033614659" />
         <EdgeLayout
           Id="Package\Geografica.Paths[ADO NET Source Output]"
           TopLeft="212.415846645242,130.821785539684">
@@ -2996,13 +2990,13 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="156.831683168317,41.8217821782179"
-          Id="Package\Practicas\ADO NET Source"
-          TopLeft="204.000007704933,80.0000030215423" />
-        <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Practicas\ADO NET Destination"
           TopLeft="187.000007062855,257.000009706705" />
+        <NodeLayout
+          Size="156.831683168317,41.8217821782179"
+          Id="Package\Practicas\ADO NET Source"
+          TopLeft="204.000007704933,80.0000030215423" />
         <EdgeLayout
           Id="Package\Practicas.Paths[ADO NET Source Output]"
           TopLeft="279.14357174033,121.82178519976">
