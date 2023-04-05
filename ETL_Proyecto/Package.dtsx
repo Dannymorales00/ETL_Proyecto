@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{1B58F7FF-21C1-49F2-B159-AAA77A630542}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{B075D55F-32E4-4CE7-93DE-F52E709636F0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1358,11 +1358,11 @@
                   description="Specifies the SQL statement used by the component to extract data."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT   ScPracticaEmpresarial.TbCantones.Nombre AS Canton, ScPracticaEmpresarial.TbDistritos.Nombre AS Distrito, ScPracticaEmpresarial.TbProvincias.Nombre AS Provincia, ScPracticaEmpresarial.TbEmpresas.IdEmpresa
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT   ScPracticaEmpresarial.TbCantones.Nombre AS Canton, ScPracticaEmpresarial.TbDistritos.Nombre AS Distrito, ScPracticaEmpresarial.TbProvincias.Nombre AS Provincia, ScPracticaEmpresarial.TbUbicacionEmpresas.IdEmpresa
 FROM      ScPracticaEmpresarial.TbCantones INNER JOIN
                 ScPracticaEmpresarial.TbDistritos ON ScPracticaEmpresarial.TbCantones.IdCanton = ScPracticaEmpresarial.TbDistritos.IdCanton INNER JOIN
-                ScPracticaEmpresarial.TbProvincias ON ScPracticaEmpresarial.TbCantones.IdProvincia = ScPracticaEmpresarial.TbProvincias.IdProvincia CROSS JOIN
-                ScPracticaEmpresarial.TbEmpresas</property>
+                ScPracticaEmpresarial.TbProvincias ON ScPracticaEmpresarial.TbCantones.IdProvincia = ScPracticaEmpresarial.TbProvincias.IdProvincia INNER JOIN
+                ScPracticaEmpresarial.TbUbicacionEmpresas ON ScPracticaEmpresarial.TbDistritos.IdDistrito = ScPracticaEmpresarial.TbUbicacionEmpresas.IdDistrito</property>
                 <property
                   dataType="System.Int32"
                   description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
@@ -2742,7 +2742,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Costos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Costos\ADO NET Destination"
@@ -2782,9 +2782,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2934,7 +2932,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Geografica">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Geografica\ADO NET Destination"
@@ -2942,41 +2940,39 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
         <NodeLayout
           Size="156.831683168317,41.8217821782179"
           Id="Package\Geografica\ADO NET Source"
-          TopLeft="134.000005061083,89.0000033614659" />
+          TopLeft="132.333338397695,87.142860529061" />
         <EdgeLayout
           Id="Package\Geografica.Paths[ADO NET Source Output]"
-          TopLeft="212.415846645242,130.821785539684">
+          TopLeft="210.749179981853,128.964642707279">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="278.455455666721,140.178224695791"
+              EndConnector="280.122122330111,142.035367528196"
               Start="0,0"
-              End="278.455455666721,132.678224695791">
+              End="280.122122330111,134.535367528196">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.0891123478955" />
+                    End="0,67.0176837640981" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,66.0891123478955"
-                    Point2="0,70.0891123478955"
-                    Point3="4,70.0891123478955" />
+                    Point1="0,67.0176837640981"
+                    Point2="0,71.0176837640981"
+                    Point3="4,71.0176837640981" />
                   <mssgle:LineSegment
-                    End="274.455455666721,70.0891123478955" />
+                    End="276.122122330111,71.0176837640981" />
                   <mssgle:CubicBezierSegment
-                    Point1="274.455455666721,70.0891123478955"
-                    Point2="278.455455666721,70.0891123478955"
-                    Point3="278.455455666721,74.0891123478955" />
+                    Point1="276.122122330111,71.0176837640981"
+                    Point2="280.122122330111,71.0176837640981"
+                    Point3="280.122122330111,75.0176837640981" />
                   <mssgle:LineSegment
-                    End="278.455455666721,132.678224695791" />
+                    End="280.122122330111,134.535367528196" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3002,7 +2998,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Practicas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Practicas\ADO NET Destination"
@@ -3030,7 +3026,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3056,7 +3054,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Tiempo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="153.029702970298,41.8217821782179"
           Id="Package\Tiempo\Derived Column"
@@ -3100,9 +3098,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3136,9 +3132,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
