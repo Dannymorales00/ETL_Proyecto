@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{E7F3EC5B-D351-410D-9F75-447BF3903D54}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{1B58F7FF-21C1-49F2-B159-AAA77A630542}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -358,7 +358,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{699623E8-5B96-42F0-B317-A30E011E9E6B}"
-          SQLTask:SqlStatementSource="USE [DW_DbUTN]&#xA;GO&#xA;&#xA;/****** Object:  Table [dbo].[D_Practicas]    Script Date: 1/4/2023 03:25:49 ******/&#xA;SET ANSI_NULLS ON&#xA;GO&#xA;&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[D_Practicas](&#xA;&#x9;[IdPracticaEmpresarial] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[IdCosto] [int] NULL,&#xA;&#x9;[IdEstudiante] [int] NULL,&#xA;&#x9;[IdEmpresa] [int] NULL,&#xA;&#x9;[IdGeografia] [int] NULL,&#xA;&#x9;[IdTiempo] [int] NULL,&#xA;&#x9;[NotaAcademica] [float] NULL,&#xA;&#x9;[NotaEmpresarial] [float] NULL,&#xA; CONSTRAINT [PK_D_Practicas] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[IdPracticaEmpresarial] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Costos] FOREIGN KEY([IdCosto])&#xA;REFERENCES [dbo].[D_Costos] ([IdCosto])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Costos]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Empresas] FOREIGN KEY([IdEmpresa])&#xA;REFERENCES [dbo].[D_Empresas] ([IdEmpresa])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Empresas]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Estudiantes] FOREIGN KEY([IdEstudiante])&#xA;REFERENCES [dbo].[D_Estudiantes] ([IdEstudiante])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Estudiantes]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Geograficas] FOREIGN KEY([IdGeografia])&#xA;REFERENCES [dbo].[D_Geograficas] ([IdGeografica])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Geograficas]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Tiempos] FOREIGN KEY([IdTiempo])&#xA;REFERENCES [dbo].[D_Tiempos] ([IdTiempo])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Tiempos]&#xA;GO&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="USE [DW_DbUTN]&#xA;GO&#xA;&#xA;/****** Object:  Table [dbo].[D_Practicas]    Script Date: 1/4/2023 03:25:49 ******/&#xA;SET ANSI_NULLS ON&#xA;GO&#xA;&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[D_Practicas](&#xA;&#x9;[IdPracticaEmpresarial] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[IdCosto] [int] NULL,&#xA;&#x9;[IdEstudiante] [int] NULL,&#xA;&#x9;[IdEmpresa] [int] NULL,&#xA;&#x9;[IdGeografica] [int] NULL,&#xA;&#x9;[IdTiempo] [int] NULL,&#xA;&#x9;[NotaAcademica] [float] NULL,&#xA;&#x9;[NotaEmpresarial] [float] NULL,&#xA; CONSTRAINT [PK_D_Practicas] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[IdPracticaEmpresarial] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Costos] FOREIGN KEY([IdCosto])&#xA;REFERENCES [dbo].[D_Costos] ([IdCosto])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Costos]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Empresas] FOREIGN KEY([IdEmpresa])&#xA;REFERENCES [dbo].[D_Empresas] ([IdEmpresa])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Empresas]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Estudiantes] FOREIGN KEY([IdEstudiante])&#xA;REFERENCES [dbo].[D_Estudiantes] ([IdEstudiante])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Estudiantes]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Geograficas] FOREIGN KEY([IdGeografica])&#xA;REFERENCES [dbo].[D_Geograficas] ([IdGeografica])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Geograficas]&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas]  WITH CHECK ADD  CONSTRAINT [FK_D_Practicas_D_Tiempos] FOREIGN KEY([IdTiempo])&#xA;REFERENCES [dbo].[D_Tiempos] ([IdTiempo])&#xA;GO&#xA;&#xA;ALTER TABLE [dbo].[D_Practicas] CHECK CONSTRAINT [FK_D_Practicas_D_Tiempos]&#xA;GO&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1617,12 +1617,6 @@ FROM      ScPracticaEmpresarial.TbCantones INNER JOIN
                       externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdEstudiante]"
                       lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdEstudiante]" />
                     <inputColumn
-                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdPracticaEmpresarial]"
-                      cachedDataType="i4"
-                      cachedName="IdPracticaEmpresarial"
-                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdPracticaEmpresarial]"
-                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]" />
-                    <inputColumn
                       refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NotaEmpresarial]"
                       cachedDataType="r8"
                       cachedName="NotaEmpresarial"
@@ -1634,6 +1628,18 @@ FROM      ScPracticaEmpresarial.TbCantones INNER JOIN
                       cachedName="NotaAcademica"
                       externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[NotaAcademica]"
                       lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaAcademica]" />
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdUbicacionEmpresa]"
+                      cachedDataType="i4"
+                      cachedName="IdUbicacionEmpresa"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdGeografica]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdUbicacionEmpresa]" />
+                    <inputColumn
+                      refId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdPracticaEmpresarial]"
+                      cachedDataType="i4"
+                      cachedName="IdPracticaEmpresarial"
+                      externalMetadataColumnId="Package\Practicas\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdTiempo]"
+                      lineageId="Package\Practicas\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdPracticaEmpresarial]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2736,15 +2742,15 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Costos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="156.831683168317,41.8217821782179"
-          Id="Package\Costos\ADO NET Source"
-          TopLeft="101.000003814697,70.0000026438496" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Costos\ADO NET Destination"
           TopLeft="127.000004796699,238.000008989089" />
+        <NodeLayout
+          Size="156.831683168317,41.8217821782179"
+          Id="Package\Costos\ADO NET Source"
+          TopLeft="101.000003814697,70.0000026438496" />
         <EdgeLayout
           Id="Package\Costos.Paths[ADO NET Source Output]"
           TopLeft="179.415845398856,111.821784822067">
@@ -2776,7 +2782,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2802,7 +2810,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Empresas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156.831683168317,41.8217821782179"
           Id="Package\Empresas\ADO NET Source"
@@ -2842,7 +2850,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2868,7 +2878,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Estudiantes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="172.990099009901,41.8217821782179"
           Id="Package\Estudiantes\ADO NET Source"
@@ -2896,7 +2906,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2922,7 +2934,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Geografica">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Geografica\ADO NET Destination"
@@ -2962,7 +2974,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3042,7 +3056,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Tiempo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="153.029702970298,41.8217821782179"
           Id="Package\Tiempo\Derived Column"
@@ -3086,7 +3100,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3120,7 +3136,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
