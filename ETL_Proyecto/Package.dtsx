@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{4C0216AE-5410-4CA8-94C9-7FD2ABECD803}">
+  DTS:VersionBuild="40"
+  DTS:VersionGUID="{19993E62-B3ED-455F-9F28-54699F608282}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -103,11 +103,18 @@
                   name="ADO NET Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdCosto]"
-                      cachedDataType="i4"
-                      cachedName="IdCosto"
-                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdCosto]"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]" />
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Area]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Area"
+                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Area]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]" />
+                    <inputColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CostoHora]"
+                      cachedDataType="r8"
+                      cachedName="CostoHora"
+                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CostoHora]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]" />
                     <inputColumn
                       refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Actividad]"
                       cachedDataType="wstr"
@@ -116,18 +123,17 @@
                       externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Actividad]"
                       lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Actividad]" />
                     <inputColumn
-                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CostoHora]"
-                      cachedDataType="r8"
-                      cachedName="CostoHora"
-                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CostoHora]"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]" />
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[IdCosto]"
+                      cachedDataType="i4"
+                      cachedName="IdCosto"
+                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[IdCosto]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]" />
                     <inputColumn
-                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Area]"
-                      cachedDataType="wstr"
-                      cachedLength="100"
-                      cachedName="Area"
-                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Area]"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]" />
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CostoTotal]"
+                      cachedDataType="r8"
+                      cachedName="CostoTotal"
+                      externalMetadataColumnId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CostoTotal]"
+                      lineageId="Package\Costos\Derived Column.Outputs[Derived Column Output].Columns[CostoTotal]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -149,6 +155,10 @@
                       dataType="wstr"
                       length="100"
                       name="Area" />
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[CostoTotal]"
+                      dataType="r8"
+                      name="CostoTotal" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -191,7 +201,9 @@
                   description="Specifies the SQL statement used by the component to extract data."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT   ScPracticaEmpresarial.TbCostos.Area, ScPracticaEmpresarial.TbCostos.CostoHora, ScPracticaEmpresarial.TbCostos.Actividad, ScPracticaEmpresarial.TbCostos.IdCosto, ScPracticaEmpresarial.TbPracticasEmpresariales.Horas
+FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
+                ScPracticaEmpresarial.TbPracticasEmpresariales ON ScPracticaEmpresarial.TbCostos.IdCosto = ScPracticaEmpresarial.TbPracticasEmpresariales.IdCostos</property>
                 <property
                   dataType="System.Int32"
                   description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
@@ -210,7 +222,7 @@
                   dataType="System.Int32"
                   description="Specify the mode to retrieve external column information"
                   name="AccessMode"
-                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
@@ -229,13 +241,23 @@
                   name="ADO NET Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]"
-                      dataType="i4"
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCosto]"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]"
-                      name="IdCosto"
+                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Area]"
+                      length="100"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]"
+                      name="Area"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CostoHora]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]"
+                      name="CostoHora"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Actividad]"
@@ -248,45 +270,48 @@
                       name="Actividad"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]"
-                      dataType="r8"
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CostoHora]"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]"
-                      name="CostoHora"
+                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCosto]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[IdCosto]"
+                      name="IdCosto"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]"
-                      dataType="wstr"
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Horas]"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Area]"
-                      length="100"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Area]"
-                      name="Area"
+                      externalMetadataColumnId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Horas]"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Horas]"
+                      name="Horas"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCosto]"
-                      dataType="i4"
-                      name="IdCosto" />
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Area]"
+                      dataType="wstr"
+                      length="100"
+                      name="Area" />
+                    <externalMetadataColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CostoHora]"
+                      dataType="r8"
+                      name="CostoHora" />
                     <externalMetadataColumn
                       refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Actividad]"
                       dataType="wstr"
                       length="100"
                       name="Actividad" />
                     <externalMetadataColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CostoHora]"
-                      dataType="r8"
-                      name="CostoHora" />
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[IdCosto]"
+                      dataType="i4"
+                      name="IdCosto" />
                     <externalMetadataColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Area]"
-                      dataType="wstr"
-                      length="100"
-                      name="Area" />
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Horas]"
+                      dataType="i4"
+                      name="Horas" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -294,28 +319,6 @@
                   isErrorOut="true"
                   name="ADO NET Source Error Output">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCosto]"
-                      dataType="i4"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCosto]"
-                      name="IdCosto" />
-                    <outputColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Actividad]"
-                      dataType="wstr"
-                      length="100"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Actividad]"
-                      name="Actividad" />
-                    <outputColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CostoHora]"
-                      dataType="r8"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CostoHora]"
-                      name="CostoHora" />
-                    <outputColumn
-                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Area]"
-                      dataType="wstr"
-                      length="100"
-                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Area]"
-                      name="Area" />
                     <outputColumn
                       refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -328,6 +331,118 @@
                       lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Area]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Area]"
+                      name="Area" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CostoHora]"
+                      dataType="r8"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CostoHora]"
+                      name="CostoHora" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Actividad]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Actividad]"
+                      name="Actividad" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCosto]"
+                      dataType="i4"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[IdCosto]"
+                      name="IdCosto" />
+                    <outputColumn
+                      refId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Horas]"
+                      dataType="i4"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Horas]"
+                      name="Horas" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Costos\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Costos\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Costos\Derived Column.Inputs[Derived Column Input].Columns[CostoHora]"
+                      cachedDataType="r8"
+                      cachedName="CostoHora"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]" />
+                    <inputColumn
+                      refId="Package\Costos\Derived Column.Inputs[Derived Column Input].Columns[Horas]"
+                      cachedDataType="i4"
+                      cachedName="Horas"
+                      lineageId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Horas]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Costos\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Costos\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Costos\Derived Column.Outputs[Derived Column Output].Columns[CostoTotal]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Costos\Derived Column.Outputs[Derived Column Output].Columns[CostoTotal]"
+                      name="CostoTotal"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(#{Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[Horas]} * #{Package\Costos\ADO NET Source.Outputs[ADO NET Source Output].Columns[CostoHora]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(Horas * CostoHora)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Costos\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Costos\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Costos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Costos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Costos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Costos\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -337,9 +452,14 @@
           <paths>
             <path
               refId="Package\Costos.Paths[ADO NET Source Output]"
-              endId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              endId="Package\Costos\Derived Column.Inputs[Derived Column Input]"
               name="ADO NET Source Output"
               startId="Package\Costos\ADO NET Source.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Costos.Paths[Derived Column Output]"
+              endId="Package\Costos\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Costos\Derived Column.Outputs[Derived Column Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2770,49 +2890,73 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Costos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Costos\ADO NET Destination"
-          TopLeft="127.000004796699,238.000008989089" />
+          TopLeft="276.166671169932,369.85715008984" />
         <NodeLayout
           Size="156.831683168317,41.8217821782179"
           Id="Package\Costos\ADO NET Source"
           TopLeft="101.000003814697,70.0000026438496" />
+        <NodeLayout
+          Size="153.029702970298,41.8217821782179"
+          Id="Package\Costos\Derived Column"
+          TopLeft="102.499999798367,217.285711391378" />
         <EdgeLayout
           Id="Package\Costos.Paths[ADO NET Source Output]"
-          TopLeft="179.415845398856,111.821784822067">
+          TopLeft="179.215348341186,111.821784822067">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="36.4554465265557,126.178224167021"
+              EndConnector="0,105.463926569311"
               Start="0,0"
-              End="36.4554465265557,118.678224167021">
+              End="0,97.963926569311">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.0891120835106" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,59.0891120835106"
-                    Point2="0,63.0891120835106"
-                    Point3="4,63.0891120835106" />
-                  <mssgle:LineSegment
-                    End="32.4554465265557,63.0891120835106" />
-                  <mssgle:CubicBezierSegment
-                    Point1="32.4554465265557,63.0891120835106"
-                    Point2="36.4554465265557,63.0891120835106"
-                    Point3="36.4554465265557,67.0891120835106" />
-                  <mssgle:LineSegment
-                    End="36.4554465265557,118.678224167021" />
+                    End="0,97.963926569311" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Costos.Paths[Derived Column Output]"
+          TopLeft="179.014851283516,259.107493569596">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186.02310701513,110.749656520244"
+              Start="0,0"
+              End="186.02310701513,103.249656520244">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.3748282601218" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.3748282601218"
+                    Point2="0,55.3748282601218"
+                    Point3="4,55.3748282601218" />
+                  <mssgle:LineSegment
+                    End="182.02310701513,55.3748282601218" />
+                  <mssgle:CubicBezierSegment
+                    Point1="182.02310701513,55.3748282601218"
+                    Point2="186.02310701513,55.3748282601218"
+                    Point3="186.02310701513,59.3748282601218" />
+                  <mssgle:LineSegment
+                    End="186.02310701513,103.249656520244" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3030,7 +3174,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Practicas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Practicas\ADO NET Destination"
@@ -3058,7 +3202,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3084,15 +3230,15 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Tiempo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="153.029702970298,41.8217821782179"
-          Id="Package\Tiempo\Derived Column"
-          TopLeft="120.166666470017,200.571425899734" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156.831683168317,41.8217821782179"
           Id="Package\Tiempo\ADO NET Source"
           TopLeft="94.1666664814267,70.5714276313879" />
+        <NodeLayout
+          Size="153.029702970298,41.8217821782179"
+          Id="Package\Tiempo\Derived Column"
+          TopLeft="120.166666470017,200.571425899734" />
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Tiempo\ADO NET Destination"
@@ -3128,7 +3274,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3162,7 +3310,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
