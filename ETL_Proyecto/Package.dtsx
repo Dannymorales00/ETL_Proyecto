@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{B075D55F-32E4-4CE7-93DE-F52E709636F0}">
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{4C0216AE-5410-4CA8-94C9-7FD2ABECD803}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1988,6 +1988,12 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
                   name="ADO NET Destination Input">
                   <inputColumns>
                     <inputColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[Horas]"
+                      cachedDataType="i4"
+                      cachedName="Horas"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Horas]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[Horas]" />
+                    <inputColumn
                       refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[MesInicio]"
                       cachedDataType="i4"
                       cachedName="MesInicio"
@@ -2040,6 +2046,10 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
                       refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[MesFin]"
                       dataType="i4"
                       name="MesFin" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Horas]"
+                      dataType="i4"
+                      name="Horas" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2201,6 +2211,15 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
                       lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[NotaEmpresarial]"
                       name="NotaEmpresarial"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[Horas]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Horas]"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].Columns[Horas]"
+                      name="Horas"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2241,6 +2260,10 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
                       refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NotaEmpresarial]"
                       dataType="r8"
                       name="NotaEmpresarial" />
+                    <externalMetadataColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Horas]"
+                      dataType="i4"
+                      name="Horas" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2294,6 +2317,11 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
                       dataType="r8"
                       lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NotaEmpresarial]"
                       name="NotaEmpresarial" />
+                    <outputColumn
+                      refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Horas]"
+                      dataType="i4"
+                      lineageId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Horas]"
+                      name="Horas" />
                     <outputColumn
                       refId="Package\Tiempo\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2715,18 +2743,18 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="588.686467610832,286.96463605567">
+          TopLeft="588.686467610832,286.964636055671">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,89.1067875063305"
+              EndConnector="0,89.1067875063301"
               Start="0,0"
-              End="0,81.6067875063305">
+              End="0,81.6067875063301">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,81.6067875063305" />
+                    End="0,81.6067875063301" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2742,7 +2770,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Costos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Costos\ADO NET Destination"
@@ -2782,7 +2810,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2932,7 +2962,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Geografica">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Geografica\ADO NET Destination"
@@ -2972,7 +3002,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2998,7 +3030,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
     design-time-name="Package\Practicas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="177.742574257426,41.8217821782179"
           Id="Package\Practicas\ADO NET Destination"
@@ -3026,9 +3058,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3058,7 +3088,7 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
         <NodeLayout
           Size="153.029702970298,41.8217821782179"
           Id="Package\Tiempo\Derived Column"
-          TopLeft="119.166666432248,200.571425899734" />
+          TopLeft="120.166666470017,200.571425899734" />
         <NodeLayout
           Size="156.831683168317,41.8217821782179"
           Id="Package\Tiempo\ADO NET Source"
@@ -3069,13 +3099,13 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
           TopLeft="394.999999222976,294.357138936184" />
         <EdgeLayout
           Id="Package\Tiempo.Paths[Derived Column Output]"
-          TopLeft="195.681517917397,242.393208077952">
+          TopLeft="196.681517955166,242.393208077952">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="288.189768434292,51.9639308582322"
+              EndConnector="287.189768396523,51.9639308582322"
               Start="0,0"
-              End="288.189768434292,44.4639308582322">
+              End="287.189768396523,44.4639308582322">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3086,13 +3116,13 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
                     Point2="0,25.9819654291161"
                     Point3="4,25.9819654291161" />
                   <mssgle:LineSegment
-                    End="284.189768434292,25.9819654291161" />
+                    End="283.189768396523,25.9819654291161" />
                   <mssgle:CubicBezierSegment
-                    Point1="284.189768434292,25.9819654291161"
-                    Point2="288.189768434292,25.9819654291161"
-                    Point3="288.189768434292,29.9819654291161" />
+                    Point1="283.189768396523,25.9819654291161"
+                    Point2="287.189768396523,25.9819654291161"
+                    Point3="287.189768396523,29.9819654291161" />
                   <mssgle:LineSegment
-                    End="288.189768434292,44.4639308582322" />
+                    End="287.189768396523,44.4639308582322" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3107,9 +3137,9 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="23.0990098518113,88.1782160901282"
+              EndConnector="24.0990098895807,88.1782160901283"
               Start="0,0"
-              End="23.0990098518113,80.6782160901282">
+              End="24.0990098895807,80.6782160901283">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -3120,13 +3150,13 @@ FROM      ScPracticaEmpresarial.TbCostos INNER JOIN
                     Point2="0,44.0891080450641"
                     Point3="4,44.0891080450641" />
                   <mssgle:LineSegment
-                    End="19.0990098518113,44.0891080450641" />
+                    End="20.0990098895807,44.0891080450641" />
                   <mssgle:CubicBezierSegment
-                    Point1="19.0990098518113,44.0891080450641"
-                    Point2="23.0990098518113,44.0891080450641"
-                    Point3="23.0990098518113,48.0891080450641" />
+                    Point1="20.0990098895807,44.0891080450641"
+                    Point2="24.0990098895807,44.0891080450641"
+                    Point3="24.0990098895807,48.0891080450641" />
                   <mssgle:LineSegment
-                    End="23.0990098518113,80.6782160901282" />
+                    End="24.0990098895807,80.6782160901283" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
